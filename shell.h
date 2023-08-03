@@ -16,10 +16,12 @@
 #include <fcntl.h>
 #include <dirent.h>
 
-typedef struct shell{
+typedef struct simple_shell{
 	int
 	char
-} shell_struct
+	*function
+	void(*f)(char*)
+} shell;
 
 unsigned long int simple_shell(shell_struct *parameter);
 
