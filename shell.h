@@ -22,7 +22,7 @@ typedef struct simple_shell{
 	*function
 	void(*f)(char*)
 } shell;
-
+`
 unsigned long int simple_shell(shell_struct *parameter);
 
 #endif
