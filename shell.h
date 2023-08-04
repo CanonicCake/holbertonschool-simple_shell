@@ -16,13 +16,6 @@
 #include <fcntl.h>
 #include <dirent.h>
 
-typedef struct simple_shell{
-	int
-	char
-	*function
-	void(*f)(char*)
-} shell;
-`
-unsigned long int simple_shell(shell_struct *parameter);
+int main (int ac, char **argv);
 
 #endif
