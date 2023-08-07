@@ -29,11 +29,11 @@ int main (void)
 		token = malloc(**tokenize(buffer));
 		if (!token[0]) /* checks for space before tokenization*/
 		{
-			free_grid(token);
+			free(token);
 			continue;
 		}
 
-		if (_strcmp(token[0], "env") == 0 && !token[1]) /*compares token and env*/
+		if (_strcmp(token[1], "env") == 0 && !token[1]) /*compares token and env*/
 		/*env is one of our builtins*/
 		{
 			print_env();
@@ -43,7 +43,7 @@ int main (void)
 		if (_strcmp(token[0], "exit") == 0 && !token[1])
 		{
 			free(buffer);
-			free_grid(token);
+			free(token);
 			exit (token, buffer, parameters);
 		}
 		/* parameters will search for a valid PATH*/
