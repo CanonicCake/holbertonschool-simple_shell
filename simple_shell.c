@@ -33,7 +33,7 @@ int main (void)
 			continue;
 		}
 
-		if (strcmp(token[1], "env") == 0 && !token[1]) /*compares token and env*/
+		if (strcmp(token[0], "env") == 0 && !token[1]) /*compares token and env*/
 		/*env is one of our builtins*/
 		{
 			print_env();
