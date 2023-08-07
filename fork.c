@@ -33,3 +33,19 @@ int _fork(char **token, char *buffer, int parameters)
 	}
 	return(WEXITSTATUS(parameters)); /*finds the child process to return before the parent*/
 }
+
+/**
+ * shell_exit - prevents exit from containing too many arguments
+ * @token: token to free
+ * @@buffer: buffer to free
+ * @parameters: parameters to exit
+ *
+ * Return: void
+ */
+
+void shell_exit(char **token, char *buffer, int parameters)
+{
+	free(buffer);
+	free(token);
+	exit(parameters);
+}
