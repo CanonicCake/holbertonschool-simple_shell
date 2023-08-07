@@ -42,8 +42,58 @@ int main (void)
 		/*exit*/
 		if (_strcmp(token[0], "exit") == 0 && !token[1])
 		{
-			
+			shell_exit (token, buffer, parameters);
 		}
+		/* parameters will search for a valid PATH*/
+		parameters = exec (token, buffer, counter, parameters);
 	}
 
 }
+
+/**
+ * tokenize - will tokenize a string
+ * @buffer: contains 1024 bytes of memory
+ *
+ * Return: tokenized string on success, NULL on failure
+ */
+
+char **tokenize (char *buffer)
+{
+	int iter, hldr = 0, counter = 0;
+	char *tok = NULL, *b = NULL, **token = NULL;
+
+	while (buffer[hldr])
+	{
+		/* 9 is tab, 10 is line freed or newline, and 32 is space
+		 * So if any of these arguments are passed through we are going
+		 * to simply increment and continue*/
+		if (buffer[hldr] == 9 || buffer[hldr] == 10 || buffer[hldr] == 32)
+		{
+			hldr++;
+			counter++;
+			continue;
+		}
+		hldr++;
+	}
+
+	token = malloc(sizeof(char *) * (counter + 1));
+
+	if (!token)
+	{
+		free(buffer);
+		perror("Memory failure: ");
+		exit(0);
+	}
+	/*now we find a tokenzed value*/
+	b = _strdup(buffer);
+	tok = strtok(b, "\t\n");
+	for (iter = 0, tok, iter++)
+	{
+		token[iter] = _strdup(tok);
+		tok = strtok(NULL, "\t\n");
+	}
+
+	token[inter] = NULL;
+	free(b);
+	return (token);
+}	
