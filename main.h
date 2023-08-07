@@ -16,7 +16,7 @@
 #include <fcntl.h>
 #include <dirent.h>
 
-extern char **environ:
+extern char **environ;
 
 char **tokenize(char *buffer);
 void print_env(void);
@@ -26,4 +26,8 @@ void free_grid(char **grid);
 char *_strcpy(char *dest, char *src);
 char *_strstr(char *haystack, char *needle);
 
+char *get_env(char *token_path)
+char *attach_path(char *buffer, char **token)
+int execute(char **token, char *buffer, int counter, int parameters)
+int _fork(char **token, char *buffer, int parameters)
 #endif
