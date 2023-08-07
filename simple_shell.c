@@ -45,7 +45,7 @@ int main (void)
 		{
 			free(buffer);
 			free(token);
-			exit (token, buffer, parameters);
+			exit (*token, buffer, parameters);
 		}
 		/* parameters will search for a valid PATH*/
 		parameters = exec (token, buffer, counter, parameters);
