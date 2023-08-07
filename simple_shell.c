@@ -34,14 +34,14 @@ int main (void)
 			continue;
 		}
 
-		if (strcmp(token[0], "env") == 0 && !token[1]) /*compares token and env*/
+		if (strcmp(token, "env") == 0 && !token[1]) /*compares token and env*/
 		/*env is one of our builtins*/
 		{
 			print_env();
 			continue;
 		}
 		/*exit*/
-		if (strcmp(token[0], "exit") == 0 && !token[1])
+		if (strcmp(token, "exit") == 0 && !token[1])
 		{
 			free(buffer);
 			free(token);
