@@ -33,14 +33,14 @@ int main (void)
 			continue;
 		}
 
-		if (_strcmp(token[1], "env") == 0 && !token[1]) /*compares token and env*/
+		if (strcmp(token[1], "env") == 0 && !token[1]) /*compares token and env*/
 		/*env is one of our builtins*/
 		{
 			print_env();
 			continue;
 		}
 		/*exit*/
-		if (_strcmp(token[0], "exit") == 0 && !token[1])
+		if (strcmp(token[0], "exit") == 0 && !token[1])
 		{
 			free(buffer);
 			free(token);
@@ -61,7 +61,7 @@ int main (void)
 
 char **tokenize (char *buffer)
 {
-	int iter, hldr = 0, counter = 0;
+	int i, hldr = 0, counter = 0;
 	char *tok = NULL, *b = NULL, **token = NULL;
 
 	while (buffer[hldr])
@@ -87,15 +87,15 @@ char **tokenize (char *buffer)
 		exit(0);
 	}
 	/*now we find a tokenzed value*/
-	b = _strdup(buffer);
+	b = strdup(buffer);
 	tok = strtok(b, "\t\n");
-	for (iter = 0, tok, iter++)
+	for (i = 0, tok, i++)
 	{
-		token[iter] = _strdup(tok);
+		token[i] = strdup(tok);
 		tok = strtok(NULL, "\t\n");
 	}
 
-	token[inter] = NULL;
+	token[i] = NULL;
 	free(b);
 	return (token);
 }	

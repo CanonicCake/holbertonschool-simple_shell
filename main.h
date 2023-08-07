@@ -20,11 +20,7 @@ extern char **environ;
 
 char **tokenize(char *buffer);
 void print_env(void);
-char *_strcat(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
 void free_grid(char **grid);
-char *_strcpy(char *dest, char *src);
-char *_strstr(char *haystack, char *needle);
 char *get_env(char *token_path);
 char *attach_path(char *buffer, char **token);
 int execute(char **token, char *buffer, int counter, int parameters);

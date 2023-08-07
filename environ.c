@@ -16,12 +16,12 @@ char *get_env(char *token_path)
 	{
 		buffer = _strdup(environ[i]);
 		tok = strtok(buffer, "=");
-		if (_strcmp(tok, token_path) == 0)
+		if (strcmp(tok, token_path) == 0)
 		{
 			tok = strtok(NULL, "=");
 			if (tok)
 			{
-				token_copy = _strdup(tok);
+				token_copy = strdup(tok);
 				free(buffer);
 				return (token_copy);
 			}
@@ -46,15 +46,15 @@ char *attach_path(char *buffer, char **token)
 	size_t buffersize = 1024; /*size of a kilobyte*/
 	char *fullpath = NULL, *tok = NULL, *tok_copy;
 
-	tok_copy = _strdup(buffer);
+	tok_copy = strdup(buffer);
 	tok = strtok(tok_copy, ":");
 	while (tok)
 	{
 		fullpath = malloc(buffersize);
-		_strcpy(fullpath, tok); /*find and copy the string and path
+		strcpy(fullpath, tok); /*find and copy the string and path
 		to concatinate the / and tokenized process together*/
-		_strcat(fullpath, "/");
-		_strcat(fullpath, token[0]);
+		strcat(fullpath, "/");
+		strcat(fullpath, token[0]);
 
 		if (stat(fullpath, &strng) == 0)
 		{
