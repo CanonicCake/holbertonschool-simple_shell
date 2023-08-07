@@ -31,5 +31,5 @@ int _fork(char **token, char *buffer, int parameters)
 	{
 		execve(token[0], token, environ);
 	}
-	return(WEXITSTATUS(parameters); /*finds the child process to return before the parent*/
+	return(WEXITSTATUS(parameters)); /*finds the child process to return before the parent*/
 }
