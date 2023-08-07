@@ -20,6 +20,7 @@ int main (void)
 		counter++;
 		isatty(STDIN_FILENO) == 1 ? write (1, "usr$ ", 2) : 0;
 		/* ?: is a conditional on if true*/
+		bytes_read = getline(&buffer, &pointer, stdin);
 		if (bytes_read == -1) /* exit status and cntl-d*/
 		{
 			free(buffer);
