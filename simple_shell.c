@@ -9,7 +9,7 @@
 int main (void)
 {
 	size_t pointer = 0; /*pointer allows stdin and STDIN_FILENO to getline a string*/
-	int bytes_read, counter = 0, parameters = 0;
+	int bytes_read, counter = 0, *parameters = 0;
 	/* bytes_read and buffer are simular in the way they are connected by memory*/
 	/* parameters are the structure in which everything falls under*/
 	char *buffer = NULL, *token = NULL;
@@ -26,8 +26,8 @@ int main (void)
 			free(parameters);
 		}
 
-		token = tokenize(buffer);
-		if (!token[0]) /* checks for space*/
+		token = malloc(**tokenize(buffer));
+		if (!token[0]) /* checks for space before tokenization*/
 		{
 			free_grid(token);
 			continue;
