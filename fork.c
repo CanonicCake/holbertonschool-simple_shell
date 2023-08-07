@@ -43,7 +43,7 @@ int _fork(char **token, char *buffer, int parameters)
  * Return: void
  */
 
-void shell_exit(char **token, char *buffer, int parameters)
+void shell_exit(char *token, char *buffer, int parameters)
 {
 	free(buffer);
 	free(token);

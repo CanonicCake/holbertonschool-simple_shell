@@ -27,6 +27,6 @@ int execute(char **token, char *buffer, int counter, int parameters);
 int _fork(char **token, char *buffer, int parameters);
 char *_strdup(char *str);
 void print_env(void);
-void shell_exit(char **token, char *buffer, int parameters);
+void shell_exit(char *token, char *buffer, int parameters);
 
 #endif
