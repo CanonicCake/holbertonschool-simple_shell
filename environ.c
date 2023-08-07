@@ -9,12 +9,12 @@
 
 char *get_env(char *token_path)
 {
-	int iter;
-	char *tok = NULL, *buffer = NULL, token_copy = NULL;
+	int i;
+	char *tok = NULL, *buffer = NULL, *token_copy = NULL;
 
 	if (!environ)
 	{
-		buffer = _strdup(environ[iter]);
+		buffer = _strdup(environ[i]);
 		tok = strtok(buffer, "=");
 		if (_strcmp(tok, token_path) == 0)
 		{
@@ -94,16 +94,16 @@ int execute(char **token, char *buffer, int counter, int parameters)
 	else if (check == -1) /*if false or not given the full path*/
 	{
 		path = get_env("PATH");
-		token = attach_path(path, token);
+		*token = attach_path(path, token);
 		free(path);
 		check = stat(token[0], &strng); /*status check here*/
 		if (check == 0) /*should now have the fullpath*/
 		{
 			parameters = _fork(token, buffer, parameters);
 		}
-		if (check == -1 || check == NULL) /*check failed if command and path is not found*/
+		if (check == -1) /*check failed if command and path is not found*/
 		{
-			fprtinf(stderr, "./hsh:%i:%s: NOT FOUND\n", counter, token[0]);
+			fprintf(stderr, "./hsh:%i:%s: NOT FOUND\n", counter, token[0]);
 			free_grid(token); /*free all then set parameters to delete*/
 			parameters = 127;
 			return (parameters);
