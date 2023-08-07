@@ -42,7 +42,9 @@ int main (void)
 		/*exit*/
 		if (_strcmp(token[0], "exit") == 0 && !token[1])
 		{
-			shell_exit (token, buffer, parameters);
+			free(buffer);
+			free_grid(token);
+			exit (token, buffer, parameters);
 		}
 		/* parameters will search for a valid PATH*/
 		parameters = exec (token, buffer, counter, parameters);
