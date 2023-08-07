@@ -9,7 +9,7 @@
 
 char *get_env(char *token_path)
 {
-	int i;
+	int i = 0;
 	char *tok = NULL, *buffer = NULL, *token_copy = NULL;
 
 	if (!environ)
