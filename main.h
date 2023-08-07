@@ -30,5 +30,6 @@ char *attach_path(char *buffer, char **token);
 int execute(char **token, char *buffer, int counter, int parameters);
 int _fork(char **token, char *buffer, int parameters);
 char *_strdup(char *str);
+void print_env(void);
 
 #endif

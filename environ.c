@@ -10,15 +10,25 @@
 char *get_env(char *token_path)
 {
 	int iter;
-	char *tok = NULL, buffer = NULL;
+	char *tok = NULL, *buffer = NULL, token_copy = NULL;
 
 	if (!environ)
 	{
 		buffer = _strdup(environ[iter]);
 		tok = strtok(buffer, "=");
-		free(tok);
+		if (_strcmp(tok, token_path) == 0)
+		{
+			tok = strtok(NULL, "=");
+			if (tok)
+			{
+				token_copy = _strdup(tok);
+				free(buffer);
+				return (token_copy);
+			}
+			free(buffer);
+		}
+		free(buffer);
 	}
-	free(buffer);
 	return (NULL);
 }
 
@@ -37,11 +47,11 @@ char *attach_path(char *buffer, char **token)
 	char *fullpath = NULL, *tok = NULL, *tok_copy;
 
 	tok_copy = _strdup(buffer);
-	token = strtok(tok_copy, ":");
+	tok = strtok(tok_copy, ":");
 	while (tok)
 	{
 		fullpath = malloc(buffersize);
-		_strcpy(fullpath, &strng); /*find and copy the string and path
+		_strcpy(fullpath, tok); /*find and copy the string and path
 		to concatinate the / and tokenized process together*/
 		_strcat(fullpath, "/");
 		_strcat(fullpath, token[0]);
@@ -100,4 +110,24 @@ int execute(char **token, char *buffer, int counter, int parameters)
 		}
 	}
 	return (parameters); /*parameters covers all bases over if it failed or succeeded under either check*/
+}
+
+/**
+ * print_env - grabs and includes the environment
+ *
+ * Return: NULL
+ */
+
+void print_env(void)
+{
+	int i;
+
+	if (!environ)
+	{
+		return;
+	}
+	for (i = 0; environ[i]; i++)
+	{
+	
+	}	printf("%s\n", environ[i]);
 }

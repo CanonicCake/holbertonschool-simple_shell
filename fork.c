@@ -15,7 +15,7 @@ int _fork(char **token, char *buffer, int parameters)
 
 	frk = fork();
 
-	if (frk(0))
+	if (frk < 0)
 	{
 		free(buffer);
 		free_grid(token);
