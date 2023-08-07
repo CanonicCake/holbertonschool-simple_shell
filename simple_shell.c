@@ -43,10 +43,10 @@ int main (void)
 		/*exit*/
 		if (strcmp(token, "exit") == 0 && !token[1])
 		{
-			shell_exit (token, buffer, parameters);
+			shell_exit (token, buffer, *parameters);
 		}
 		/* parameters will search for a valid PATH*/
-		parameters = execve(token, buffer, counter, parameters);
+		parameters = execve(token, buffer, *counter, parameters);
 	}
 
 }
@@ -88,7 +88,7 @@ char **tokenize (char *buffer)
 	/*now we find a tokenzed value*/
 	b = strdup(buffer);
 	tok = strtok(b, "\t\n");
-	for (i = 0, tok, i++)
+	for (i = 0; tok; i++)
 	{
 		token[i] = strdup(tok);
 		tok = strtok(NULL, "\t\n");
