@@ -14,7 +14,7 @@ char *get_env(char *token_path)
 
 	if (!environ)
 	{
-		buffer = _strdup(environ[i]);
+		buffer = strdup(environ[i]);
 		tok = strtok(buffer, "=");
 		if (strcmp(tok, token_path) == 0)
 		{
