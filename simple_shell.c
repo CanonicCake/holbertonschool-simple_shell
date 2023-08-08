@@ -24,6 +24,7 @@ int main (void)
 		if (bytes_read == -1) /* exit status and cntl-d*/
 		{
 			free(buffer);
+			free_grid(token);
 		}
 
 		token = malloc(**tokenize(buffer));
