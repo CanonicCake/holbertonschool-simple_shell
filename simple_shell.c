@@ -27,7 +27,7 @@ int main (void)
 			free_grid(token);
 		}
 
-		token = malloc(**tokenize(buffer));
+		token = malloc(sizeof(buffer));
 		if (!token[0]) /* checks for space before tokenization*/
 		{
 			free(token);
@@ -93,7 +93,6 @@ char **tokenize (char *buffer)
 		token[i] = strdup(tok);
 		tok = strtok(NULL, "\t\n");
 	}
-
 	token[i] = NULL;
 	free(b);
 	return (token);
